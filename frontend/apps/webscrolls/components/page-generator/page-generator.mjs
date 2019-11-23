@@ -75,8 +75,8 @@ async function elementConnected(element) {
 
 async function generatePageHTML(elementParent, schema, cssParsed, cssInternal, cssHref, layoutObj) {
 	if (!elementParent.webscrolls_env) elementParent.webscrolls_env = {};
-	if (layoutObj.rowHeights < layoutObj.rows) layoutObj.rowHeights.push(Array(layoutObj.rows.length-layoutObj.rowHeights.length).fill("auto"));
-	if (layoutObj.colWidths < layoutObj.columns) layoutObj.colWidths.push(Array(layoutObj.columns.length-layoutObj.colWidths.length).fill("auto"));
+	if (layoutObj.rowHeights.length < layoutObj.rows.length) layoutObj.rowHeights.push(Array(layoutObj.rows.length-layoutObj.rowHeights.length).fill("auto"));
+	if (layoutObj.colWidths.length < layoutObj.columns.length) layoutObj.colWidths.push(Array(layoutObj.columns.length-layoutObj.colWidths.length).fill("auto"));
 
 	let css = `${cssHref?`<link rel="stylesheet" type="text/css" href="${cssHref}">`:""}
 	<style>
