@@ -29,7 +29,7 @@ async function elementConnected(element) {
 
 	let layoutPlacementArray = pageFile.match(/LAYOUT\s*\r?\n=+\r?\n(.+?)\r?\n=+[\r?\n]*/sm);
 	let layoutPlacement = (layoutPlacementArray && layoutPlacementArray.length > 1) ? layoutPlacementArray[1] : "";
-	layoutPlacement = layoutPlacement.replace(/^[\|-\s]+$/mg, "").replace(/^\s*$(?:\r\n?|\n|\r\n)/gm,"\n").trim();
+	layoutPlacement = layoutPlacement.replace(/^[\|-\s]+$/mg, "").replace(/(?:[\t\s]*(?:\r?\n|\r)){2}/gm,"\n").trim();
 
 	let layoutLines = layoutPlacement.split(/\r?\n/); 
 	let columns = 0; let lineWithMaxColumns = -1;
