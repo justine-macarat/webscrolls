@@ -1,0 +1,7 @@
+{
+    "/apps/webscrolls/login" : "/apis/login.js?get=true",
+    "/apps/webscrolls/cmsdirlisting" : "/apis/cmsdirlisting.js?get=true",
+    "/apps/webscrolls/cmsfetchdircontents" : "/apis/cmsfetchdircontents.js?get=true",
+    "/apps/webscrolls/cmsfetcharticle" : "/apis/cmsfetcharticle.js?get=true",
+    "/apps/webscrolls/navmenulisting" : "/apis/navmenulisting.js?get=true"
+}

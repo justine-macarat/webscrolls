@@ -1,0 +1,61 @@
+SCHEMA
+======
+{
+    "navbar": {"html":"navigation-menu", "level":"/", "logo":"./articles/.home/logo.png/logo.png", "massage_menu":"true", "style":"height: 50px; background: white;", "logo_style":"width:70px;", "submenu_style":"top:50px", "submenu_left_menu_style":"width:20%; background-color: #F8F9F9; color:black;", "submenu_right_menu_style":"width:80%; background-color: #F2F3F4;color:black;", "selected_submenu_style":"color: #3498DB;", "menu_item_style":"padding-right: 20px;", "menu_container_style":"padding-top: 15px;", "menu_arrow":"&nbsp;⇩"},
+    "header": {"html":"content-post", "article":"{{url.product_path}}/header.md", "id":"header", "style":"display:inline-block;background:rgba(255,255,255);width:100%;padding:0;", "styleContainer":"display:inline-block;", "styleBody":"body{padding:40px;box-sizing:border-box;font-size:5em;font-family: Raleway;} table {border-spacing: 10px;}"},
+    "product": {"html":"content-post", "article":"{{url.product_path}}/product.md", "id":"product", "style":"display:inline-block;background:rgba(255,255,255);width:100%;text-align:center;", "styleContainer":"display:inline-block;", "styleBody":"body{padding:20px;font-family: Raleway;} table {border-spacing: 10px; width:100%; color: grey; font-size: 30px;} h1{font-size: 3em; padding-top: 20px; padding-bottom: 20px;font-weight:normal;}"},
+    "how": {"html":"content-post", "article":"{{url.product_path}}/how.md", "id":"how", "style":"display:inline-block;background:rgba(255,255,255);width:100%;padding:0", "styleContainer":"display:inline-block;", "styleBody":"body{padding:40px;text-align:center;line-height: 1.6;font-family: Raleway;} table {width:100%; border-spacing: 100px 20px;} h1{font-size: 3.5em; padding-top: 20px; padding-bottom: 20px;font-weight:normal;} h2{font-size:2em;padding-top:20px;padding-bottom:20px;color:grey;font-weight:normal;}"},
+    "reviews": {"html":"content-post", "article":"{{url.product_path}}/reviews.md", "id":"reviews", "style":"display:inline-block;background:rgba(255,255,255);width:100%;padding:0", "styleContainer":"display:inline-block;", "styleBody":"body {padding:20px;text-align:center;line-height: 1.6;font-family: Raleway;} table {width:100%; border-spacing: 100px 20px;} h1{font-size: 3.5em; padding-top: 20px; padding-bottom: 20px;font-weight:normal;} h2{font-size: 2em; padding-top: 20px; padding-bottom: 20px; color: grey;font-weight:normal;}"},
+    "calltoaction": {"html":"content-post", "article":"{{url.product_path}}/calltoaction.md", "id":"calltoaction", "style":"display:inline-block;background:rgba(255,255,255);width:100%;", "styleContainer":"display:inline-block;", "styleBody":"body {padding-top:30px;text-align:center;padding-bottom: 80px;font-family: Raleway;} a {text-decoration: none !important;background-color: #3399FF !important;color: white !important;padding: 1em 1.5em !important;text-decoration: none !important;border-radius: 25px;} a:active{background-color: blue !important;}"},
+    "footer": {"html":"content-post", "article":".home/footer.md", "id":"footer", "styleContainer":"background:#efefef;height:270px;color:white;", "styleArticle":"url(./pages/common/footer.styleArticle.css)"},
+    "copyrights": {"html":"content-post", "article":".home/copyright.md", "id":"copyright", "styleContainer":"background:#efefef;height:60px;color:#787878;", "styleArticle":"url(./pages/common/copyrights.styleArticle.css)"}
+}
+======
+
+
+LAYOUT
+=================
+-----------------------------
+| navbar                    |
+-----------------------------
+| header                    |
+-----------------------------
+| product                   |
+-----------------------------
+| how                       |
+-----------------------------
+| reviews                   |
+-----------------------------
+| calltoaction              |
+-----------------------------
+| footer                    |
+-----------------------------
+| copyrights                |
+-----------------------------
+=================
+Row Heights = 50px, 350px, 350px, 350px, 350px, minmax(350px, max-content), 270px, 60px
+Col Widths = 100%
+=================
+
+
+CSS CLASSES
+===========
+CONTAINER CLASSES = grid-container-extension
+ITEM CLASSES = grid-item-extension
+PER ITEM CLASS = class
+===========
+
+CSS
+=======
+.grid-container-extension {
+    height: 100%;
+}
+
+.grid-item-extension {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+body {
+    margin: 0%;
+}
+=======

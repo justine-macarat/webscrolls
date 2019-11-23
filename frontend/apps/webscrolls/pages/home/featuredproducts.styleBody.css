@@ -1,0 +1,42 @@
+div#slider figure article:nth-of-type(odd) {background-color:#e81d26;}
+    
+div#slider figure article:nth-of-type(even) {background-color:#07439c;} 
+    
+p{
+    font-size: 14px;
+    color: #fff; 
+    display: inline-flex; 
+    margin: 0px; 
+    padding: 0px; 
+    text-align-last: left;
+    text-align: justify; 
+    font-family:Raleway; 
+    font-weight:500;
+    background-image:none; 
+    box-shadow:none; 
+    line-height:20px;
+}
+    
+img, a { 
+    float: left;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-right: 15px !important;
+}
+
+h1 {
+    height: 45px;
+    color:#fff;
+    float:none;
+    margin-right:0px;
+    font-style: normal;
+    font-size: 21px;
+    margin: 0px;
+    padding: 0px;
+    font-family:Raleway;
+    Font-weight:bold;
+    text-align: center;
+}

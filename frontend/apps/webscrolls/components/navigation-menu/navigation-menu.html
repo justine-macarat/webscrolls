@@ -1,0 +1,115 @@
+<!--
+/* 
+ * (C) 2019 TekMonks. All rights reserved.
+ * License: MIT - see enclosed license.txt file.
+ */
+ -->
+
+<style>
+body {
+    margin: 0 auto; padding: 0 auto; 
+    font-family: sans-serif; 
+}
+
+.logo {
+    height: auto;
+    width: 100%;
+}
+
+.logodiv {
+    float: left;
+    padding-top: 4px;
+    box-sizing: border-box;
+}
+
+.menudiv {
+    padding-top: 15px;
+    box-sizing: border-box;
+}
+
+.mitem {
+    width: 100%;
+    visibility: hidden;
+    position: absolute;
+    background-color: rgb(48, 48, 48);
+    color: aliceblue;
+    padding: 0px;
+    margin: 0%;
+    transition: all 0s ease-in-out 0s, height 0.2s ease-in-out;
+    display: block;
+    height: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition-delay: 0.2s;
+}
+
+.m {
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.m:hover .mitem {
+    visibility: visible;
+    height: calc(90% - 50px);
+    opacity: 1;
+    padding: 0px;
+    z-index: 2;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.7);
+    background-clip: padding-box;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(255,255,255,0.98)));
+    mask-image: gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(255,255,255,0.98)));
+}
+
+.column {
+    float: left;
+    padding: 0px;
+    height: 100%; 
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+  
+.left {width: 20%; background-color: darkkhaki;}
+  
+.right {width: 80%;}
+
+.description {
+    visibility: hidden;
+    position: absolute;
+}
+
+.selected {
+    color: darkorange;
+}
+
+.visible{visibility: visible;}
+
+.clear{clear: both;}
+</style>
+
+<body {{{style}}}>
+<nav>
+    {{#logo}}
+    <div class="logodiv" {{{logostyle}}}>
+    <a href="{{#makeLink}}./index.html{{/makeLink}}"><img class="logo" src="{{logo}}"></a>
+    </div>
+    {{/logo}}
+    
+    <div class="menudiv" {{{menustyle}}}>
+    {{#level1}}
+    <span class="m" {{{menuitemstyle}}}>{{item}}
+    {{#hasLevelTwo}}
+    <span class="mitem" {{{mitemstyle}}}>
+    {{/hasLevelTwo}}
+        <span class="column left" {{{leftmenustyle}}}>{{#level2}}<p class="submenu {{#selected}}selected{{/selected}}" onmouseover="monkshu_env.components['navigation-menu'].enableDescription(this, '{{id}}')">{{item}}</p>{{/level2}}</span>
+        <span class="column right" {{{rightmenustyle}}}>{{#level2}}<div class="description {{#selected}}visible{{/selected}}" id="{{id}}">{{{description}}}</div>{{/level2}}</span>
+    {{#hasLevelTwo}}
+    </span>
+    {{/hasLevelTwo}}
+    </span>
+    {{/level1}}
+
+    </div>
+    <div class="clear"></div>
+</nav>
+</body>

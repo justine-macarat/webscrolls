@@ -1,0 +1,25 @@
+table{
+    width: 100%;
+    table-layout: fixed;
+    padding: 50px;
+}
+table th{
+    font-size: 19px; 
+    color:#07439c;
+    font-family: Raleway;
+}
+tr th{  width:40%;  }
+tr th + th {  width:20%;  }
+tr th + th + th {  width:20%;  }
+tr th + th + th + th{  width:20%;  }
+td {  
+    color:#787878;
+    font-family: Raleway;    
+    font-weight: 500; 
+}
+tr td { padding-right:70px; }
+tr td + td { padding-right:0px; }
+tr td + td + td{ padding-right:0px; }
+tr td + td + td+ td{ padding-right:0px; }
+
+a:hover{ text-decoration:none;}

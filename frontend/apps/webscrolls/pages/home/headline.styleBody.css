@@ -1,0 +1,35 @@
+h1 {
+    font-size: 36px;
+    color: #e81d26;
+    font-family: Raleway;
+    margin: 0px;
+    padding: 0px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 900;
+    font-style: normal;
+} 
+
+p {
+    font-size: 21px;
+    margin: 1px 0 2px 0px;
+    color: black;
+    font-family: Raleway;
+    font-weight: 500;
+    font-style: normal;
+} 
+
+a {
+    color: #fff !important;
+    background: #07439c !important;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 30px !important;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-family: Raleway;
+    font-weight: 500;
+    text-decoration: none;} 
+    
+a:hover{opacity: .3;}
