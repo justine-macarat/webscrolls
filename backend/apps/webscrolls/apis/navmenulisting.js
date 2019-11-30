@@ -5,6 +5,7 @@ const API_CONSTANTS = require(`${__dirname}/lib/constants.js`);
 const path = require("path");
 const readdirAsync = require("util").promisify(require("fs").readdir);
 const readFileAsync = require("util").promisify(require("fs").readFile);
+const statSync = require("util").promisify(require("fs").stat);
 
 exports.doService = async jsonReq => {
 	if (!validateRequest(jsonReq)) {LOG.error("Validation failure."); return CONSTANTS.FALSE_RESULT;}
@@ -14,7 +15,7 @@ exports.doService = async jsonReq => {
 
     let menu = {level1: []};
     try {
-        for (let entry of await readdirAsync(cmsPath)) {
+        for (let entry of await readdirChronoOrderAsync(cmsPath)) {
             if (entry.startsWith('.')) continue;    // hidden
 
             let menu_entry = {item: entry, id:`${encodeURI(cmsPath+"/"+entry)}`};
@@ -45,6 +46,14 @@ function getEntryi18nName(entry, lang) {
         entry.substring(0, entry.lastIndexOf(".")+1)+lang+".menu"+entry.substring(entry.lastIndexOf(".")):
         `${entry}.en.menu.md`;
 	return i18nName;
+}
+
+async function readdirChronoOrderAsync(path) {
+    let files = await readdirAsync(path); let sortedFiles = [];
+    for (file of files) sortedFiles.push({file, mtime: (await statSync(`${path}/${file}`)).mtimeMs});
+    sortedFiles.sort((a,b) => a.mtime - b.mtime); files = [];
+    for (file of sortedFiles) files.push(file.file);
+    return files;
 }
 
 const validateRequest = jsonReq => (jsonReq && jsonReq.q && jsonReq.lang);

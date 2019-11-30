@@ -21,7 +21,7 @@ const main = async _ => {
 		await router.loadPage(window.location.href == APP_CONSTANTS.INDEX_HTML || 
 			router.decodeURL(window.location.href) == APP_CONSTANTS.INDEX_HTML ? 
 				APP_CONSTANTS.MAIN_HTML : window.location.href);
-	} catch (error) { router.loadPage(APP_CONSTANTS.ERROR_HTML,{error}); }
+	} catch (error) { router.loadPage(APP_CONSTANTS.ERROR_HTML,{error, stack: error.stack || new Error().stack}); }
 }
 
 export const application = {init, main};

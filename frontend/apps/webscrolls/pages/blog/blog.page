@@ -1,0 +1,50 @@
+SCHEMA
+======
+{
+    "navbar": {"html":"navigation-menu", "level":"/", "logo":"./articles/.home/logo.png/logo.png", "massage_menu":"true", "style":"height: 50px; background: white;", "logo_style":"width:70px;", "submenu_style":"top:50px", "submenu_left_menu_style":"width:20%; background-color: #F8F9F9; color:black;", "submenu_right_menu_style":"width:80%; background-color: #F2F3F4;color:black;", "selected_submenu_style":"color: #3498DB;", "menu_item_style":"padding-right: 20px;", "menu_container_style":"padding-top: 15px;", "menu_arrow":"&nbsp;⇩"},
+    "footer": {"html":"content-post", "article":".home/footer.md", "id":"footer", "styleContainer":"background:#efefef;height:270px;color:white;", "styleArticle":"url(./pages/common/footer.styleArticle.css)"},
+    "copyrights": {"html":"content-post", "article":".home/copyright.md", "id":"copyright", "styleContainer":"background:#efefef;height:60px;color:#787878;", "styleArticle":"url(./pages/common/copyrights.styleArticle.css)"}
+}
+======
+
+
+LAYOUT
+=================
+-----------------------------
+| navbar                    |
+-----------------------------
+| breadcrumbs               |
+-----------------------------
+| cmsdirectorylist          |
+-----------------------------
+| footer                    |
+-----------------------------
+| copyrights                |
+-----------------------------
+=================
+Row Heights = 50px, 270px, 60px
+Col Widths = 100%
+=================
+
+
+CSS CLASSES
+===========
+CONTAINER CLASSES = grid-container-extension
+ITEM CLASSES = grid-item-extension
+PER ITEM CLASS = class
+===========
+
+CSS
+=======
+.grid-container-extension {
+    height: 100%;
+}
+
+.grid-item-extension {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+body {
+    margin: 0%;
+}
+=======
