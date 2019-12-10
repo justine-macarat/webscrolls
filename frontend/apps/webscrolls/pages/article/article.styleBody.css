@@ -17,6 +17,7 @@ h1 {
     margin-bottom: 20px; 
     font-weight: 600;
     font-style: normal;
+    padding-top: 20px;
 }
 
 h2{
@@ -36,6 +37,7 @@ p{
     font-style: normal;  
     text-align: justify;    
     line-height: 1.5;  
+    padding: 20px;
 }
 
 ul {    
@@ -60,4 +62,8 @@ ul li{
 
 ul li:last-child { 
     margin-bottom: 80px;
+}
+
+img {
+    max-width: 100%;
 }

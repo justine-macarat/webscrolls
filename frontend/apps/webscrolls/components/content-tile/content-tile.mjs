@@ -2,10 +2,8 @@
  * (C) 2019 TekMonks. All rights reserved.
  * License: MIT - see enclosed license.txt file.
  */
-import {monkshu_component} from "/framework/js/monkshu_component.mjs";
 import {util} from "/framework/js/util.mjs";
-import {session} from "/framework/js/session.mjs";
-import {router} from "/framework/js/router.mjs";
+import {monkshu_component} from "/framework/js/monkshu_component.mjs";
 
 async function elementConnected(element) {
 	let styleBody; if (element.getAttribute("styleBody")) styleBody = `<style>${element.getAttribute("styleBody")}</style>`;
@@ -24,8 +22,7 @@ async function elementRendered(element) {
 	let elementContainer = element.shadowRoot.querySelector("div#container");
 	if (element.getAttribute("style")) elementContainer.style.cssText = element.getAttribute("style");
 
-	let articles = result.files;
-	articles.forEach((article,i) => articles[i] = `${APP_CONSTANTS.CMS_ROOT_URL}/${contentPath}/${article}/${getArticlei18nName(article)}`);
+	let articles = result.files; for (const [i,article] of articles.entries()) articles[i] = `${contentPath}/${article}`;
 
 	let tilesPerSlide = element.getAttribute("tiles_per_slide")||4;
 	let numSlides = articles.length%tilesPerSlide != 0 ? ~~(articles.length/tilesPerSlide)+1:articles.length/tilesPerSlide;
@@ -61,15 +58,10 @@ async function setArticles(element, articleArray, numSlides, tilesPerSlide) {
     let elementFig = element.shadowRoot.querySelector("div#slider figure");
 	elementFig.style.width = `${numSlides*100}%`;
 	
-	await $$.require(`${APP_CONSTANTS.APP_PATH}/components/content-tile/3p/showdown.min.js`);
-	await $$.require(`${APP_CONSTANTS.APP_PATH}/components/content-post/3p/showdown.extension.targetlink.min.js`);
-	await $$.require("/framework/3p/mustache.min.js"); 
 	for (let article of articleArray) {
-		let elementArticle = document.createElement("article");
-		let articleHTML = article.toLowerCase().endsWith(".md") ?
-			new showdown.Converter().makeHtml(await(await fetch(article)).text()) : await(await fetch(article)).text();
-		Mustache.parse(articleHTML); let contentFunctions = getContentFunctions();
-		elementArticle.innerHTML = Mustache.render(articleHTML, contentFunctions);
+		let elementArticle = document.createElement("article"); 
+		const {content_post} = await import(`${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.mjs`);
+		elementArticle.innerHTML = await content_post.getArticle(article);
 
 		if (element.getAttribute("article_style")) elementArticle.style = element.getAttribute("article_style");
 		let width=`calc(${(100/numSlides)/tilesPerSlide}% - ${elementArticle.style.paddingLeft} - ${elementArticle.style.paddingRight})`;
@@ -86,10 +78,6 @@ async function setArticles(element, articleArray, numSlides, tilesPerSlide) {
 	}
 
 	makeNavDotSelected(element, 0, numSlides);
-}
-
-function getContentFunctions() {
-	return {makeLink: _ => (text, render) => router.encodeURL(render(text))}
 }
 
 function styleSliderArrows(element, numImages) {
@@ -147,11 +135,6 @@ function makeNavDotSelected(element, selected, numSlides) {
 		if (i == selected) elementNavDot.classList.add("nav-dot-selected"); 
 		else elementNavDot.classList.remove("nav-dot-selected");
 	}
-}
-
-function getArticlei18nName(article) {
-	let i18nName = article.substring(0, article.lastIndexOf(".")+1)+session.get($$.MONKSHU_CONSTANTS.LANG_ID)+article.substring(article.lastIndexOf("."));
-	return i18nName;
 }
 
 function register() {

@@ -17,7 +17,7 @@ async function elementConnected(element) {
 		else if (element.getAttribute("level")) {
 			let level = element.getAttribute("level"), lang = session.get($$.MONKSHU_CONSTANTS.LANG_ID);
 			let menuResult = await(await fetch(`${APP_CONSTANTS.API_NAV_MENU_LISTING}?q=${level}&lang=${lang}`)).json();
-			level1 = menuResult.menu.level1;
+			if (menuResult.result) level1 = menuResult.menu.level1;
 		}
 	} catch (err) {}
 
