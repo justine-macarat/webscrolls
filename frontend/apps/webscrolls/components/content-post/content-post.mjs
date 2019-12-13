@@ -24,19 +24,23 @@ async function getArticle(path) {
 	
 	try{
 		let article = await(await fetch(`${APP_CONSTANTS.CMS_ROOT_URL}/${articlePath}`)).text();
-
-		await $$.require(`${APP_CONSTANTS.APP_PATH}/components/content-post/3p/showdown.min.js`);
-		await $$.require(`${APP_CONSTANTS.APP_PATH}/components/content-post/3p/showdown.extension.targetlink.min.js`);
-		if (articlePath.toLowerCase().endsWith(".md")) article = new showdown.Converter({
-			parseImgDimensions: true, simplifiedAutoLink: true, tables: true, simpleLineBreaks: true, emoji: true, 
-			underline: true, extensions: ["targetlink"] }).makeHtml(article);
-
-		await $$.require("/framework/3p/mustache.min.js"); 
-		Mustache.parse(article); let contentFunctions = getContentFunctions();
-		article = Mustache.render(article, contentFunctions);
-
-		return article;
+		return renderArticle(articlePath, article);
 	} catch (e) {LOG.error(`Error reading article ${path}: ${e}`); return "";}
+}
+
+async function renderArticle(path, text) {
+	await $$.require(`${APP_CONSTANTS.APP_PATH}/components/content-post/3p/showdown.min.js`);
+	await $$.require(`${APP_CONSTANTS.APP_PATH}/components/content-post/3p/showdown.extension.targetlink.min.js`);
+	let article = text;
+	if (path == null || path.toLowerCase().endsWith(".md")) article = new showdown.Converter({
+		parseImgDimensions: true, simplifiedAutoLink: true, tables: true, simpleLineBreaks: true, emoji: true, 
+		underline: true, extensions: ["targetlink"] }).makeHtml(text);
+
+	await $$.require("/framework/3p/mustache.min.js"); 
+	Mustache.parse(article); let contentFunctions = getContentFunctions();
+	article = Mustache.render(article, contentFunctions);
+
+	return article;
 }
 
 function getContentFunctions() {
@@ -56,4 +60,4 @@ function register() {
 
 const trueWebComponentMode = true;	// making this false renders the component without using Shadow DOM
 
-export const content_post = {trueWebComponentMode, register, elementConnected, getArticle}
+export const content_post = {trueWebComponentMode, register, elementConnected, getArticle, renderArticle}

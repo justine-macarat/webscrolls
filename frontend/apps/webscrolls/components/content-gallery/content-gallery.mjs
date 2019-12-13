@@ -57,8 +57,10 @@ async function getSubBlogs(path, number) {
 	let numProcessed = 0; let tiles = []; let rows = [];
 	const {content_post} = await import(`${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.mjs`);
 	for (const blog of subBlogs) {
-		const blogPath = `${path}/${blog}`; tiles.push({content: await content_post.getArticle(blogPath), id: "notblank"}); numProcessed++;
-		if (numProcessed == number) {rows.push(tiles); tiles = [];}
+		const blogPath = `${path}/${blog}`; 
+		tiles.push({content: await content_post.getArticle(blogPath), id: "notblank", 
+			link: router.encodeURL(`./article.html?article_path=${blogPath}`)}); 
+		numProcessed++; if (numProcessed == number) {rows.push(tiles); tiles = [];}
 	}
 	// push the last row, if not pushed. push empty tiles for blank spaces, as it helps CSS line up.
 	if (tiles.length) {const emptyPushes = number - tiles.length; for (let i = 0; i < emptyPushes; i++) tiles.push({id:"blank"}); rows.push(tiles);}
