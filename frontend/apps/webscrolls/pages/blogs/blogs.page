@@ -1,6 +1,8 @@
 SCHEMA
 ======
 {
+    "metadata": {"html":"page-meta", "files":"./pages/blogs/metadata.{{lang}}.txt"},
+
     "navbar": {"html":"navigation-menu", "level":"/", "logo":"./articles/.home/logo.png/logo.png", "massage_menu":"true", "styleBody":"url(./pages/home/navbar.styleBody.css)", "logo_style":"width:70px;", "menu_arrow":"&nbsp;⇩"},
     
     "navcrumbs": {"html":"crumb-nav", "level":"{{url.blogs_path}}", "level_name":"blogs_path", "filterDottedDirs":"true", "styleBody":"body{height: 50px;}"},
@@ -17,6 +19,8 @@ SCHEMA
 LAYOUT
 =================
 -----------------------------
+| metadata                  |
+-----------------------------
 | navbar                    |
 -----------------------------
 | navcrumbs                 |
@@ -28,7 +32,7 @@ LAYOUT
 | copyrights                |
 -----------------------------
 =================
-Row Heights = 50px, 50px, minmax(800px, max-content), 270px, 60px
+Row Heights = 0px, 50px, 50px, minmax(800px, max-content), 270px, 60px
 Col Widths = 100%
 =================
 

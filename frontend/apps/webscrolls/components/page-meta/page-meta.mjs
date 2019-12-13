@@ -13,8 +13,11 @@ async function elementRendered(element) {
 	const filesToInject = element.getAttribute("files").split(',');
 
 	for (const file of filesToInject) {
-		const content = await(await fetch(file)).text();
-		document.head.innerHTML += content;
+		const data = await fetch(file);
+		if (data.ok) {
+			const content = await data.text();
+			document.head.innerHTML += content;
+		}
 	}
 }
 

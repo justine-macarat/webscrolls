@@ -2,9 +2,9 @@
  * (C) 2019 TekMonks. All rights reserved.
  * License: MIT - see enclosed license.txt file.
  */
-import {monkshu_component} from "/framework/js/monkshu_component.mjs";
 import {util} from "/framework/js/util.mjs";
 import {session} from "/framework/js/session.mjs";
+import {monkshu_component} from "/framework/js/monkshu_component.mjs";
 
 async function elementConnected(element) {
 	let styleBody; if (element.getAttribute("styleBody")) styleBody = `<style>${element.getAttribute("styleBody")}</style>`;
@@ -68,9 +68,8 @@ async function setImages(element, imgArray) {
 
 	let elementLi = element.shadowRoot.querySelector("div#slider li");
 	
-	await $$.require(`${APP_CONSTANTS.APP_PATH}/components/image-slider/3p/showdown.min.js`);
-	await $$.require(`${APP_CONSTANTS.APP_PATH}/components/image-slider/3p/showdown.extension.targetlink.min.js`);
-	imgArray.forEach((image, i) => {
+	const {content_post} = await import(`${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.mjs`);
+	for (const [i, image] of imgArray.entries()) {
 		let elementDivImgContainer = document.createElement("div"); elementDivImgContainer.className = "relative";
 		let elementImg = document.createElement("img");
 		elementImg.src = image.img; elementImg.style.width = `${100/numImages}%`; elementImg.style.cssText += element.getAttribute("style");	
@@ -78,9 +77,7 @@ async function setImages(element, imgArray) {
 		
 		if (image.caption) {
 			let elementImgCaption = document.createElement("article"); elementImgCaption.classList.add("caption");
-			elementImgCaption.innerHTML = image.isMD ? new showdown.Converter({
-				parseImgDimensions: true, simplifiedAutoLink: true, tables: true, simpleLineBreaks: true, emoji: true, 
-				underline: true, extensions: ["targetlink"] }).makeHtml(image.caption) : image.caption;
+			elementImgCaption.innerHTML = image.isMD ? await content_post.renderArticle(null, image.caption) : image.caption;
 			elementImgCaption.style.cssText += element.getAttribute("caption_style") ? element.getAttribute("caption_style") : "";
 			elementDivImgContainer.appendChild(elementImgCaption);
 		}
@@ -91,7 +88,7 @@ async function setImages(element, imgArray) {
 		elementLabel.className = "nav-dot"; elementLabel.id = `dot-${i}`; 
 		elementLabel.onclick = _=> {elementFig.style.left = `${-1*i*100}%`; makeNavDotSelected(element, i, numImages);}
 		elementLi.appendChild(elementLabel);
-	});
+	}
 
 	makeNavDotSelected(element, 0, numImages);
 }

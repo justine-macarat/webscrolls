@@ -1,6 +1,6 @@
 #The Reflection Network
 
-![Reflection Network](articles/software/cybersecurity/reflection/product.md/product.en.png =1000x582)
+![Reflection Network](articles/software.md/cybersecurity/reflection/product.md/product.en.png =1000x582)
 
 ||||
 |:--:|:--:|:--:|

@@ -1,6 +1,8 @@
 SCHEMA
 ======
 {
+    "metadata": {"html":"page-meta", "files":"./articles/{{url.article_path}}/metadata.{{lang}}.txt"},
+
     "navbar": {"html":"navigation-menu", "level":"/", "logo":"./articles/.home/logo.png/logo.png", "massage_menu":"true", "styleBody":"url(./pages/home/navbar.styleBody.css)", "logo_style":"width:70px;", "menu_arrow":"&nbsp;⇩"},
     
     "headerimg": {"html":"img", "src":"./articles/{{url.article_path}}/header.{{lang}}.png", "style":"height:350px;width:100%"},
@@ -19,6 +21,8 @@ SCHEMA
 LAYOUT
 =================
 -----------------------------
+| metadata                  |
+-----------------------------
 | navbar                    |
 -----------------------------
 | headerimg                 |
@@ -30,7 +34,7 @@ LAYOUT
 | copyrights                |
 -----------------------------
 =================
-Row Heights = 50px, 350px, minmax(800px, max-content), 270px, 60px
+Row Heights = 0px, 50px, 350px, minmax(800px, max-content), 270px, 60px
 Col Widths = 78%, 22%
 =================
 
