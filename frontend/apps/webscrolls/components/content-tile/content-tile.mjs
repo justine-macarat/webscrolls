@@ -60,7 +60,7 @@ async function setArticles(element, articleArray, numSlides, tilesPerSlide) {
 	
 	for (let article of articleArray) {
 		let elementArticle = document.createElement("article"); 
-		const {content_post} = await import(`${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.mjs`);
+		const {content_post} = await import(`${APP_CONSTANTS.COMPONENT_PATH}/content-post/content-post.mjs`);
 		elementArticle.innerHTML = await content_post.getArticle(article);
 
 		if (element.getAttribute("article_style")) elementArticle.style = element.getAttribute("article_style");

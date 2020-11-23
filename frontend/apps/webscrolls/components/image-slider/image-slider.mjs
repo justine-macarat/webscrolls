@@ -68,7 +68,7 @@ async function setImages(element, imgArray) {
 
 	let elementLi = element.shadowRoot.querySelector("div#slider li");
 	
-	const {content_post} = await import(`${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.mjs`);
+	const {content_post} = await import(`${APP_CONSTANTS.COMPONENT_PATH}/content-post/content-post.mjs`);
 	for (const [i, image] of imgArray.entries()) {
 		let elementDivImgContainer = document.createElement("div"); elementDivImgContainer.className = "relative";
 		let elementImg = document.createElement("img");

@@ -2,23 +2,14 @@ SCHEMA
 ======
 {
     "metadata": {"html":"page-meta", "files":"./pages/home/metadata.{{lang}}.txt"},
-
-    "navbar": {"html":"navigation-menu", "level":"/", "logo":"./articles/.home/logo.png/logo.png", "massage_menu":"true", "styleBody":"url(./pages/home/navbar.styleBody.css)", "logo_style":"width:70px;", "menu_arrow":"&nbsp;⇩"},
-
+    "navbar": {"html":"navigation-menu", "level":".menus/{{lang}}", "logo":"./articles/.home/logo.png/logo.png", "massage_menu":"true", "styleBody":"url(./pages/home/navbar.styleBody.css)", "logo_style":"width:70px;", "menu_arrow":"&nbsp;⇩"},
     "headline": {"html":"image-slider", "path":".home/headlineimages", "pause":12000, "transition":800, "styleBody":"url(./pages/home/headline.styleBody.css)", "dot_style":"background: rgba(255, 255, 255, 0.6); width, height: 10px", "selected_dot_style":"background: rgba(255, 255, 255, 0.95)", "chevron_style":"font-size: 40px;background: rgba(255, 255, 255, 0.6);color: rgba(0, 0, 0, 0.45);border-radius: 25px;", "caption_style":"max-width:50%; top: -230px;left: 55px;", "style":"height:450px;object-fit:cover;"},
-
     "featuredproducts": {"html":"content-tile", "path":".home/featuredproducts", "tiles_per_slide": 4, "pause":8000, "transition":800, "styleBody":"url(./pages/home/featuredproducts.styleBody.css)", "dot_style":"background: rgba(255, 255, 255, 0.6); width, height: 10px", "selected_dot_style":"background: rgba(255, 255, 255, 0.95)", "chevron_style":"font-size: 40px;background: rgba(255, 255, 255, 0.6);color: rgba(0, 0, 0, 0.45);border-radius: 25px;", "style":"height:350px;background:white;width:100%", "article_style":"padding:20px;"},
-
     "aboutus": {"html":"content-post", "article":".home/aboutus.md", "id":"aboutus", "styleContainer":"background:rgba(255,255,255,1);height:400px;", "styleArticle":"url(./pages/home/aboutus.styleArticle.css)"},
-
     "verticals": {"html":"content-post", "article":".home/verticals.md", "id":"verticals", "styleContainer":"background:rgba(255, 255, 255, 1);height:620px;", "styleArticle":"url(./pages/home/verticals.styleArticle.css)"},
-
     "testimonials": {"html":"content-post", "article":".home/testimonials.md", "id":"testimonials", "styleContainer":"background:rgba(255, 255, 255, 1);height:125px;color:#0f4b9c;font-size:48px;font-family:Raleway;font-weight:900;text-align:center;padding-top:50px"},
-    
     "clients": {"html":"content-tile", "path":".home/testimonials", "tiles_per_slide": 3, "pause":10000, "transition":800, "styleBody":"url(./pages/home/clients.styleBody.css)", "dot_style":"background: rgba(255, 255, 255, 0.0); width, height: 10px", "selected_dot_style":"background: rgba(255, 255, 255, 0.0)", "chevron_style":"font-size: 40px;background: rgba(255, 255, 255, 0.6);color: rgba(0, 0, 0, 0.45);border-radius: 25px;" ,"style":"height:350px;background:white;width:100%", "article_style":"padding-left: 1%; padding-right: 1%; color: white; text-align: center;"},
-
     "footer": {"html":"content-post", "article":".home/footer.md", "id":"footer", "styleContainer":"background:#efefef;height:270px;color:white;", "styleArticle":"url(./pages/common/footer.styleArticle.css)"},
-    
     "copyrights": {"html":"content-post", "article":".home/copyright.md", "id":"copyright", "styleContainer":"background:#efefef;height:60px;color:#787878;", "styleArticle":"url(./pages/common/copyrights.styleArticle.css)"}
 }
 ======

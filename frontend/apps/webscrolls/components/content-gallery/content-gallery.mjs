@@ -25,7 +25,7 @@ async function createPageData(element) {
 	if (!subBlogPaths.result) return {}; 
 	
 	let pageData = {};
-	const {content_post} = await import(`${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.mjs`);
+	const {content_post} = await import(`${APP_CONSTANTS.COMPONENT_PATH}/content-post/content-post.mjs`);
 	for (const file of subBlogPaths.files) if (/main\..+/.test(file)) 
 		pageData.main = { content: await content_post.getArticle(`${curPath}/${file}`), link: router.encodeURL(
 			`./article.html?article_path=${curPath}/${file}`) };

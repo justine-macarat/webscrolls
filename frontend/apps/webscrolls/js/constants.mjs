@@ -9,6 +9,7 @@ const API_PATH = `${BACKEND}/apps/webscrolls`;
 
 export const APP_CONSTANTS = {
     FRONTEND, BACKEND, APP_PATH,
+    COMPONENT_PATH: APP_PATH+"/components",
     MAIN_HTML: APP_PATH+"/home.html",
     ARTICLE_HTML: APP_PATH+"/article.html",
     LANDING_HTML: APP_PATH+"/landing.html",
