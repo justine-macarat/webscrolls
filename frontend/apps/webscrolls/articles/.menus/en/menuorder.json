@@ -1,0 +1,15 @@
+{
+    "level1": [
+        {"item": "Verticals", 
+        "hasLevelTwo": true,
+        "level2": [ 
+            {"item": "Finance"}
+        ]},
+        {"item": "Services", 
+        "hasLevelTwo": true,
+        "level2": [
+            {"item": "Cybersecurity"},
+            {"item": "Enterprise Solutions"}
+        ]}
+    ]
+}
