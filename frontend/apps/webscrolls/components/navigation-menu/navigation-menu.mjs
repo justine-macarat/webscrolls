@@ -35,9 +35,12 @@ async function elementConnected(element) {
 	} else navigation_menu.data = data;
 }
 
-function enableDescription(searchElement, id) {
+function enableRightColumnContent(searchElement, id) {
 	const elementDescriptions = searchElement.parentElement.parentElement.querySelectorAll(".description");
 	elementDescriptions.forEach(element => {if (element.id == id) element.classList.add("visible"); else element.classList.remove("visible");});
+
+	const elementNavbarHeader = searchElement.parentElement.parentElement.querySelectorAll(".navbarheader");
+	elementNavbarHeader.forEach(element => {if (element.id == id) element.classList.add("visible"); else element.classList.remove("visible");});
 
 	const elementSubmenus = searchElement.parentElement.querySelectorAll(".submenu");
 	elementSubmenus.forEach(element => {if (element === searchElement) element.classList.add("selected"); else element.classList.remove("selected");});
@@ -46,10 +49,8 @@ function enableDescription(searchElement, id) {
 async function _massageMenu(element, entries, level) {
 	const i18nObj = await i18n.getI18NObject(session.get($$.MONKSHU_CONSTANTS.LANG_ID));
 	const {content_post} = await import(`${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.mjs`);
-
 	let levelCheck = "level"+(level+1);
 	for (let entry of entries) {
-
 		// translate the menu item entry or otherwise upcase it properly etc.
 		if (i18nObj[entry.item]) entry.item = i18nObj[entry.item]; else {
 			if (entry.item.length) entry.item = entry.item.substring(0, 1).toUpperCase() + entry.item.substring(1);
@@ -60,11 +61,14 @@ async function _massageMenu(element, entries, level) {
 		if (entry.description) entry.description = await content_post.renderArticle(null, entry.description);
 
 		if (entry[levelCheck]) {
-			if (element.getAttribute("menu_arrow")) entry.item = `${entry.item}${element.getAttribute("menu_arrow")}`;
+			entry.level1 = `${entry.item}`;
+			if (element.getAttribute("menu_arrow")) 
+			{ 
+				entry.item = `${entry.item}${element.getAttribute("menu_arrow")}`;
+			}
 			entry[levelCheck] = await _massageMenu(element, entry[levelCheck], level+1);
 		}
 	}
-
 	return entries;
 }
 
@@ -75,4 +79,4 @@ function register() {
 
 const trueWebComponentMode = true;	// making this false renders the component without using Shadow DOM
 
-export const navigation_menu = {trueWebComponentMode, register, elementConnected, enableDescription}
+export const navigation_menu = {trueWebComponentMode, register, elementConnected, enableRightColumnContent}
