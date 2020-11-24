@@ -75,10 +75,15 @@ body {
   
 .right {
     width: 80%;
-    padding-left: 10px;
 }
 
 .description {
+    visibility: hidden;
+    position: absolute;
+    padding: 200px 20px 0px 20px;
+}
+
+.navbarheader {
     visibility: hidden;
     position: absolute;
 }
@@ -88,6 +93,10 @@ body {
 }
 
 .visible{visibility: visible;}
+
+.grid-container-extension {
+    height: 100%;
+}
 
 .clear{clear: both;}
 </style>
@@ -107,8 +116,13 @@ body {
     {{#hasLevelTwo}}
     <span class="mitem"}>
     {{/hasLevelTwo}}
-        <span class="column left">{{#level2}}<p class="submenu {{#selected}}selected{{/selected}}" onmouseover="monkshu_env.components['navigation-menu'].enableDescription(this, '{{id}}')">{{item}}</p>{{/level2}}</span>
-        <span class="column right">{{#level2}}<div class="description {{#selected}}visible{{/selected}}" id="{{id}}">{{{description}}}</div>{{/level2}}</span>
+        <span class="column left">{{#level2}}<p class="submenu {{#selected}}selected{{/selected}}" onmouseover="monkshu_env.components['navigation-menu'].enableRightColumnContent(this, '{{id}}')">{{item}}</p>{{/level2}}</span>
+        <span class="column right">
+            {{#level2}}
+                <div class="description {{#selected}}visible{{/selected}}" id="{{id}}">{{{description}}}</div>
+                <div class="navbarheader {{#selected}}visible{{/selected}}" id="{{id}}"><img src="articles/.menus/{{lang}}/{{level1}}/{{item}}/header.png" style="height:200px;width:100vw"></div>
+        {{/level2}}
+        </span>
     {{#hasLevelTwo}}
     </span>
     {{/hasLevelTwo}}
