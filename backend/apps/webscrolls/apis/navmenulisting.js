@@ -5,10 +5,10 @@ const path = require("path");
 const fs = require("fs");
 const { promisify } = require("util");
 const API_CONSTANTS = require(`${__dirname}/lib/constants.js`);
-const readdirAsync = require("util").promisify(require("fs").readdir);
-const readFileAsync = require("util").promisify(require("fs").readFile);
-const fsAccessAsync = promisify(fs.access);
-const statAsync = require("util").promisify(require("fs").stat);
+const readdirAsync = promisify(require("fs").readdir);
+const readFileAsync = promisify(require("fs").readFile);
+const fsAccessAsync = promisify(require("fs").access);
+const statAsync = promisify(require("fs").stat);
 
 exports.doService = async jsonReq => {
     if (!validateRequest(jsonReq)) { LOG.error("Validation failure."); return CONSTANTS.FALSE_RESULT; }
@@ -16,10 +16,14 @@ exports.doService = async jsonReq => {
     let cmsPath = path.resolve(`${API_CONSTANTS.CMS_ROOT}/${jsonReq.q}`);
     LOG.debug(`Got menu listing request for path: ${cmsPath}`);
 
-    let menu = { level1: [] };
+    let menu = {};
 
     try {
-        for (const entry of await readdirMenuOrderFileAsyncReturnLevel1Dir(cmsPath)) {
+        let items = await readdirMenuOrderFileAsyncReturnDir(cmsPath, jsonReq.lang);
+        if(typeof (items[0]) == "object") menu.level1 = items;
+        else {
+            menu.level1 = [];
+            for (const entry of await readdirMenuOrderFileAsyncReturnDir(cmsPath, jsonReq.lang)) {
             if (entry.startsWith('.')) continue;    // hidden
 
             let menu_entry = { item: entry, id: `${encodeURI(cmsPath + "/" + entry)}` };
@@ -27,7 +31,7 @@ exports.doService = async jsonReq => {
             if (sub_entries.length > 0) {
                 menu_entry.hasLevelTwo = true; menu_entry.level2 = []
                 for (let sub_entry of sub_entries) {
-                    const sub_menu = { item: sub_entry, sub: sub_entries, id: `${encodeURI(cmsPath + "/" + entry + "/" + sub_entry)}` };
+                    const sub_menu = { item: sub_entry, id: `${encodeURI(cmsPath + "/" + entry + "/" + sub_entry)}` };
                     try {
                         const fileToRead = `${cmsPath}/${entry}/${sub_entry}/${getEntryi18nName(sub_entry, jsonReq.lang)}`;
                         sub_menu.description = await readFileAsync(fileToRead, "utf8");
@@ -37,10 +41,11 @@ exports.doService = async jsonReq => {
                 }
             };
             menu.level1.push(menu_entry);
+            }
         }
         return { result: true, menu };
     }
-    catch (err) { return { result: true, menu }; }
+    catch (err) {return CONSTANTS.FALSE_RESULT;}
 }
 
 function getEntryi18nName(entry, lang) {
@@ -50,16 +55,22 @@ function getEntryi18nName(entry, lang) {
     return i18nName;
 }
 
-async function readdirMenuOrderFileAsyncReturnLevel1Dir(path) {
+async function readdirMenuOrderFileAsyncReturnDir(path, lang, files) {
     var files = [];
     let menuOrderFile = `${path}/menuorder.json`;
-    let isMenuOrderFileAccessible = await accessFileAsync(menuOrderFile);
-    if (isMenuOrderFileAccessible) {
+    try {
+        await fsAccessAsync(menuOrderFile);
         let menuOrderFileContent = JSON.parse(await readFileAsync(menuOrderFile, "utf8"));
-        Object.entries(menuOrderFileContent["menuorder"]).forEach(([itemIndex, itemContent]) => {
-            files.push(itemContent.level1.item);
-        });
-    } else {
+        for (const itemContent of Object.values(menuOrderFileContent["menuorder"])){
+            itemContent.level1.id = `${encodeURI(path + "/" + itemContent.level1.item)}`
+            for (const subItemContent of itemContent.level1.level2) {
+                subItemContent.id = `${encodeURI(path + "/" + itemContent.level1.item + "/" + subItemContent.item)}`;
+                const fileToRead = `${path}/${itemContent.level1.item}/${subItemContent.item}/${getEntryi18nName(subItemContent.item, lang)}`;
+                subItem.description = await readFileAsync(fileToRead, "utf8");
+            }
+            files.push(itemContent.level1);
+        }
+    } catch (error) {
         files = await readdirAsync(path); let sortedFiles = [];
         for (const file of files) {
             const fileStats = await statAsync(`${path}/${file}`);
@@ -71,14 +82,6 @@ async function readdirMenuOrderFileAsyncReturnLevel1Dir(path) {
     return files;
 }
 
-const accessFileAsync = (file) => {
-    return new Promise((resolve, reject) => {
-        fs.access(file, (err) => {
-            if (err) reject(err);
-            else resolve(true);
-        });
-    });
-}
 async function readdirAsyncReturnOnlyDirs(path) {
     const files = await readdirAsync(path); let filesFiltered = [];
     for (const file of files) if ((await statAsync(`${path}/${file}`)).isDirectory()) filesFiltered.push(file);
