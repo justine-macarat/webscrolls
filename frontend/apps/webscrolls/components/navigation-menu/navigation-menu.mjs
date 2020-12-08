@@ -49,6 +49,7 @@ function enableRightColumnContent(searchElement, id) {
 async function _massageMenu(element, entries, level) {
 	const i18nObj = await i18n.getI18NObject(session.get($$.MONKSHU_CONSTANTS.LANG_ID));
 	const {content_post} = await import(`${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.mjs`);
+	
 	let levelCheck = "level"+(level+1);
 	for (let entry of entries) {
 		// translate the menu item entry or otherwise upcase it properly etc.
@@ -62,10 +63,7 @@ async function _massageMenu(element, entries, level) {
 
 		if (entry[levelCheck]) {
 			entry.level1 = `${entry.item}`;
-			if (element.getAttribute("menu_arrow")) 
-			{ 
-				entry.item = `${entry.item}${element.getAttribute("menu_arrow")}`;
-			}
+			if (element.getAttribute("menu_arrow")) entry.item = `${entry.item}${element.getAttribute("menu_arrow")}`;
 			entry[levelCheck] = await _massageMenu(element, entry[levelCheck], level+1);
 		}
 	}
