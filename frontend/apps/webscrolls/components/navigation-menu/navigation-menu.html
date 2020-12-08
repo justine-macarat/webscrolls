@@ -88,6 +88,11 @@ body {
     position: absolute;
 }
 
+.navbarheader img {
+   height:200px;
+   width:100vw;
+}
+
 .selected {
     color: darkorange;
 }
@@ -120,7 +125,7 @@ body {
         <span class="column right">
             {{#level2}}
                 <div class="description {{#selected}}visible{{/selected}}" id="{{id}}">{{{description}}}</div>
-                <div class="navbarheader {{#selected}}visible{{/selected}}" id="{{id}}"><img src="articles/.menus/{{lang}}/{{level1}}/{{item}}/header.png" style="height:200px;width:100vw"></div>
+                <div class="navbarheader {{#selected}}visible{{/selected}}" id="{{id}}"><img src="articles/.menus/{{lang}}/{{level1}}/{{item}}/header.png"></div>
         {{/level2}}
         </span>
     {{#hasLevelTwo}}
