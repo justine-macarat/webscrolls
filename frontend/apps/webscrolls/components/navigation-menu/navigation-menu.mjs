@@ -14,6 +14,7 @@ async function elementConnected(element) {
 			`${APP_CONSTANTS.CMS_ROOT_URL}/${element.getAttribute("file")}`)).json()).level1;
 		else if (element.getAttribute("level")) {
 			const level = element.getAttribute("level"), lang = session.get($$.MONKSHU_CONSTANTS.LANG_ID);
+			console.log(level);
 			const menuResult = await(await fetch(`${APP_CONSTANTS.API_NAV_MENU_LISTING}?q=${level}&lang=${lang}`)).json();
 			if (menuResult.result) level1 = menuResult.menu.level1;
 		}
@@ -38,6 +39,9 @@ async function elementConnected(element) {
 function enableDescription(searchElement, id) {
 	const elementDescriptions = searchElement.parentElement.parentElement.querySelectorAll(".description");
 	elementDescriptions.forEach(element => {if (element.id == id) element.classList.add("visible"); else element.classList.remove("visible");});
+
+	const elementMenuBgImage = searchElement.parentElement.parentElement.querySelectorAll(".menubgimage");
+	elementMenuBgImage.forEach(element => {if (element.id == id) element.classList.add("visible"); else element.classList.remove("visible");});
 
 	const elementSubmenus = searchElement.parentElement.querySelectorAll(".submenu");
 	elementSubmenus.forEach(element => {if (element === searchElement) element.classList.add("selected"); else element.classList.remove("selected");});

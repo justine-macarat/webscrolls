@@ -22,6 +22,25 @@ body {
     box-sizing: border-box;
 }
 
+.contactusdiv {
+    float: right;
+    padding-top: 15px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+.contactusdiv a{
+   color: #fff !important; 
+   background: #07439c !important; 
+   font-size: 16px; 
+   font-weight: 500; 
+   padding: 5px 25px !important; 
+   border-radius: 5px;
+   font-family: Raleway; 
+   font-weight: 500; 
+   text-decoration: none;
+}
+
 .menudiv {
     padding-top: 15px;
     box-sizing: border-box;
@@ -41,6 +60,7 @@ body {
     z-index: -1;
     opacity: 0;
     transition-delay: 0.2s;
+    height: 450px !important;
 }
 
 .m {
@@ -51,7 +71,7 @@ body {
 
 .m:hover .mitem {
     visibility: visible;
-    height: calc(90% - 50px);
+    height: calc(90% - 170px);
     opacity: 1;
     padding: 0px;
     z-index: 2;
@@ -75,12 +95,22 @@ body {
   
 .right {
     width: 80%;
-    padding-left: 10px;
+    /* padding-left: 10px; */
 }
 
 .description {
     visibility: hidden;
     position: absolute;
+    padding: 0px 20px 0px 20px;
+    z-index: 1;
+}
+
+.menubgimage {
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
 }
 
 .selected {
@@ -90,6 +120,8 @@ body {
 .visible{visibility: visible;}
 
 .clear{clear: both;}
+
+
 </style>
 {{{styleBody}}}
 
@@ -100,7 +132,6 @@ body {
     <a href="{{#makeLink}}./index.html{{/makeLink}}"><img class="logo" src="{{logo}}"></a>
     </div>
     {{/logo}}
-    
     <div class="menudiv">
     {{#level1}}
     <span class="m">{{item}}
@@ -108,13 +139,15 @@ body {
     <span class="mitem"}>
     {{/hasLevelTwo}}
         <span class="column left">{{#level2}}<p class="submenu {{#selected}}selected{{/selected}}" onmouseover="monkshu_env.components['navigation-menu'].enableDescription(this, '{{id}}')">{{item}}</p>{{/level2}}</span>
-        <span class="column right">{{#level2}}<div class="description {{#selected}}visible{{/selected}}" id="{{id}}">{{{description}}}</div>{{/level2}}</span>
+        <span class="column right">{{#level2}}
+            <div class="description {{#selected}}visible{{/selected}}" id="{{id}}">{{{description}}}</div>
+            <div class="menubgimage {{#selected}}visible{{/selected}}" id="{{id}}"><img src="./articles/.menus/en/.menubgimage/menu-bg-3.png"></div>
+            {{/level2}}</span>
     {{#hasLevelTwo}}
     </span>
     {{/hasLevelTwo}}
     </span>
     {{/level1}}
-
     </div>
     <div class="clear"></div>
 </nav>

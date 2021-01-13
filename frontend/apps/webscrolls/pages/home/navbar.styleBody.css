@@ -30,7 +30,7 @@ p.submenu.selected {
     width:80%; 
     background-color: #F2F3F4; 
     color:black;
-    padding: 0px 20px 0px 20px;
+    /* padding: 10px 20px 0px 20px; */
 }
 
 div.description > p > a {
@@ -38,6 +38,26 @@ div.description > p > a {
     color: inherit;
 }
 
-div.description > p > a:hover {
+td {
+    padding: 0 20px 20px;
+    text-align: justify !important;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+td p {
+    height: 100px;
+}
+
+td:last-child {
+    border: none;
+}
+
+td a{
+    text-decoration: none;
+    color: #07439c;
+}
+
+td a:hover{
     text-decoration: underline;
 }

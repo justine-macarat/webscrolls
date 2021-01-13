@@ -1,42 +1,54 @@
-div#slider figure article:nth-of-type(odd) {background-color:#e81d26;}
+a h1:nth-child(odd) {color:#e81d26;}
     
-div#slider figure article:nth-of-type(even) {background-color:#07439c;} 
-    
-p{
+a h1:nth-child(even) {color:#07439c;}
+
+h1 {margin-left: 95px;}
+
+table {
+    display: flex;
+    flex-direction: column;
+}
+
+td {
+    padding: 40px;
     font-size: 14px;
-    color: #fff; 
-    display: inline-flex; 
-    margin: 0px; 
-    padding: 0px; 
-    text-align-last: left;
-    text-align: justify; 
+    color: black; 
+    font-size: 14px;
+    text-align-last: left !important;
+    text-align: justify !important; 
     font-family:Raleway; 
     font-weight:500;
     background-image:none; 
     box-shadow:none; 
     line-height:20px;
+    width: 33.3333%;
 }
-    
-img, a { 
+
+td a img{ 
     float: left;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+    margin-top: 0px;
     margin-right: 15px !important;
 }
 
-h1 {
-    height: 45px;
-    color:#fff;
-    float:none;
-    margin-right:0px;
-    font-style: normal;
-    font-size: 21px;
-    margin: 0px;
-    padding: 0px;
-    font-family:Raleway;
-    Font-weight:bold;
-    text-align: center;
+td a:hover{
+    text-decoration:none !important;
+    color: black;
 }
+
+
+/* td a {
+    display: inline-flex;
+    height: 130px;
+} */
+
+td p {
+    margin-left: 95px;
+    height: 50px;
+}
+
+body {margin:0}

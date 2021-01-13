@@ -52,7 +52,6 @@ function getArticlei18nName(article) {
 	return i18nName;
 }
 
-
 function register() {
 	// convert this all into a WebComponent so we can use it
 	monkshu_component.register("content-post", `${APP_CONSTANTS.APP_PATH}/components/content-post/content-post.html`, content_post);

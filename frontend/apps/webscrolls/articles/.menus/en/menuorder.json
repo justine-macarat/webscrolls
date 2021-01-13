@@ -24,6 +24,26 @@
                     }
                 ]
             }
+        },
+        {
+            "level1": {
+                "item": "Products",
+                "hasLevelTwo": true,
+                "level2": [
+                    {
+                        "item": "B2B eCommerce and Apis"
+                    },
+                    {
+                        "item": "Cybersecurity"
+                    },
+                    {
+                        "item": "Enterprise Integration"
+                    },
+                    {
+                        "item": "Enterprise Monitoring and Response"
+                    }
+                ]
+            }
         }
     ]
 }

@@ -3,11 +3,12 @@ SCHEMA
 {
     "metadata": {"html":"page-meta", "files":"./articles/{{url.product_path}}/metadata.{{lang}}.txt"},
     "navbar": {"html":"navigation-menu", "level":".menus/{{lang}}", "logo":"./articles/.home/logo.png/logo.png", "massage_menu":"true", "styleBody":"url(./pages/home/navbar.styleBody.css)", "logo_style":"width:70px;", "menu_arrow":"&nbsp;⇩"},
-    "header": {"html":"content-post", "article":"{{url.product_path}}/header.md", "id":"header", "style":"display:inline-block;background:rgba(255,255,255);width:100%;padding:0;", "styleContainer":"display:inline-block;", "styleBody":"body{padding:40px;box-sizing:border-box;font-size:5em;font-family: Raleway;} table {border-spacing: 10px;}"},
+    "header": {"html":"content-post", "article":"{{url.product_path}}/header.md", "id":"header", "style":"display:inline-block;background:rgba(255,255,255);width:100%;padding:0;", "styleContainer":"display:inline-block;", "styleBody":"body{padding:40px;box-sizing:border-box;font-size:5em;font-family: Raleway;} table {border-spacing: 10px;} table td {width: 50%}"},
+    "introduction": {"html":"content-post", "article":"{{url.product_path}}/introduction.md", "id":"introduction", "style":"display:inline-block;background:#efefef;width:100%;padding:0;", "styleContainer":"display:inline-block;", "styleBody":"body{padding:40px;box-sizing:border-box;font-family: Raleway;} h1{font-size: 1em; padding-top: 20px; padding-bottom: 20px;font-weight:normal; color: #07439c; text-align: center;}"},
     "product": {"html":"content-post", "article":"{{url.product_path}}/product.md", "id":"product", "style":"display:inline-block;background:rgba(255,255,255);width:100%;text-align:center;", "styleContainer":"display:inline-block;", "styleBody":"body{padding:20px;font-family: Raleway;} table {border-spacing: 10px; width:100%; color: grey; font-size: 30px;} h1{font-size: 3em; padding-top: 20px; padding-bottom: 20px;font-weight:normal;}"},
     "how": {"html":"content-post", "article":"{{url.product_path}}/how.md", "id":"how", "style":"display:inline-block;background:rgba(255,255,255);width:100%;padding:0", "styleContainer":"display:inline-block;", "styleBody":"body{padding:40px;text-align:center;line-height: 1.6;font-family: Raleway;} table {width:100%; border-spacing: 100px 20px;} h1{font-size: 3.5em; padding-top: 20px; padding-bottom: 20px;font-weight:normal;} h2{font-size:2em;padding-top:20px;padding-bottom:20px;color:grey;font-weight:normal;}"},
-    "reviews": {"html":"content-post", "article":"{{url.product_path}}/reviews.md", "id":"reviews", "style":"display:inline-block;background:rgba(255,255,255);width:100%;padding:0", "styleContainer":"display:inline-block;", "styleBody":"body {padding:20px;text-align:center;line-height: 1.6;font-family: Raleway;} table {width:100%; border-spacing: 100px 20px;} h1{font-size: 3.5em; padding-top: 20px; padding-bottom: 20px;font-weight:normal;} h2{font-size: 2em; padding-top: 20px; padding-bottom: 20px; color: grey;font-weight:normal;}"},
-    "calltoaction": {"html":"content-post", "article":"{{url.product_path}}/calltoaction.md", "id":"calltoaction", "style":"display:inline-block;background:rgba(255,255,255);width:100%;", "styleContainer":"display:inline-block;", "styleBody":"body {padding-top:30px;text-align:center;padding-bottom: 80px;font-family: Raleway;} a {text-decoration: none !important;background-color: #3399FF !important;color: white !important;padding: 1em 1.5em !important;text-decoration: none !important;border-radius: 25px;} a:active{background-color: blue !important;}"},
+    "reviews": {"html":"content-post", "article":"{{url.product_path}}/reviews.md", "id":"reviews", "style":"display:inline-block;background:#efefef;width:100%;padding:0", "styleContainer":"display:inline-block;", "styleBody":"body {padding:20px;text-align:center;line-height: 1.6;font-family: Raleway;} table {width:100%; border-spacing: 100px 20px;} h1{font-size: 3.5em; padding-top: 20px; padding-bottom: 20px;font-weight:normal;} h2{font-size: 2em; padding-top: 20px; padding-bottom: 20px; color: grey;font-weight:normal;}"},
+    "calltoaction": {"html":"content-post", "article":"{{url.product_path}}/calltoaction.md", "id":"calltoaction", "style":"display:inline-block;background:#07439c14;width:100%;", "styleContainer":"display:inline-block;", "styleBody":"body {padding-top:50px;text-align:center;padding-bottom: 80px;font-family: Raleway;} a {text-decoration: none !important;background-color: #07439c !important;color: white !important;padding: 0.5em 2em !important;text-decoration: none !important;border-radius: 5px;font-weight: 500; font-size:16px;} a:active{background-color: blue !important;} h1 {color:#07439c;font-weight: normal;)"},
     "footer": {"html":"content-post", "article":".home/footer.md", "id":"footer", "styleContainer":"background:#efefef;height:270px;color:white;", "styleArticle":"url(./pages/common/footer.styleArticle.css)"},
     "copyrights": {"html":"content-post", "article":".home/copyright.md", "id":"copyright", "styleContainer":"background:#efefef;height:60px;color:#787878;", "styleArticle":"url(./pages/common/copyrights.styleArticle.css)"}
 }
@@ -23,20 +24,22 @@ LAYOUT
 -----------------------------
 | header                    |
 -----------------------------
+| introduction              |
+-----------------------------
 | product                   |
 -----------------------------
 | how                       |
 -----------------------------
-| reviews                   |
------------------------------
 | calltoaction              |
+-----------------------------
+| reviews                   |
 -----------------------------
 | footer                    |
 -----------------------------
 | copyrights                |
 -----------------------------
 =================
-Row Heights = 0px, 50px, 350px, 350px, 350px, 350px, minmax(350px, max-content), 270px, 60px
+Row Heights = 0px, 50px, 350px, 200px, 350px, 350px, minmax(350px, max-content), 350px, 270px, 60px
 Col Widths = 100%
 =================
 
