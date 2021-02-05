@@ -99,18 +99,18 @@ function styleSliderArrows(element, numImages) {
 
 	let elementLeftArrow = element.shadowRoot.querySelector(".left-arrow");
 	elementLeftArrow.onclick = _ => {
-		let curPercent = elementFig.style.left ? elementFig.style.left.substring(0, elementFig.style.left.length-1) : 0;
-		curPercent = curPercent == 0 ? (numImages-1)*-1*100:parseInt(curPercent)+100;
-		elementFig.style.left = `${curPercent}%`;
+		let curPercent = elementFig.style.right ? elementFig.style.right.substring(0, elementFig.style.right.length-1) : 0;
+		curPercent = curPercent == 0 ? (numImages-1)*1*100:parseInt(curPercent)+100;
+		elementFig.style.right = `${curPercent}%`;
 		
 		makeNavDotSelected(element, -1*curPercent/100, numImages);
 	}
 
 	let elementRightArrow = element.shadowRoot.querySelector(".right-arrow");
 	elementRightArrow.onclick = _ => {
-		let curPercent = elementFig.style.left ? elementFig.style.left.substring(0, elementFig.style.left.length-1) : 0;
-		curPercent = curPercent-100 == numImages*-1*100 ? 0:curPercent-100;
-		elementFig.style.left = `${curPercent}%`;
+		let curPercent = elementFig.style.right ? elementFig.style.right.substring(0, elementFig.style.right.length-1) : 0;
+		curPercent = curPercent-100 == numImages*-1*100 ? 0:100;
+		elementFig.style.right = `${curPercent}%`;
 		
 		makeNavDotSelected(element, -1*curPercent/100, numImages);
 	}

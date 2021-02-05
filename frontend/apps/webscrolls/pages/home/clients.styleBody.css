@@ -32,13 +32,13 @@ h1:after {
 }
 
 article:nth-of-type(odd) h1 {	
-    background-color: #e81d26; 
+    background-color: #A81010; 
 }
 article:nth-of-type(even) h1 {	
     background-color: #07439c; 
 }
 article:nth-of-type(odd) h1:after { 
-    border-color: #e81d26 #e81d26 transparent transparent; 
+    border-color:#A81010 #A81010 transparent transparent; 
 }
 article:nth-of-type(even) h1:after {	 
     border-color: #07439c #07439c transparent transparent; 
@@ -96,3 +96,4 @@ h3{
     color: #0f4b9c;  
     font-family: Raleway; 
 }
+

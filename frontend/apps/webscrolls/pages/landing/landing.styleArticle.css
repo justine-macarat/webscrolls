@@ -1,0 +1,21 @@
+td h1:nth-of-type(odd) {
+    color: #A81010 !important;
+}
+
+td h1:nth-of-type(even) {
+    color: #07439c !important;
+}
+
+h1.productheader {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+}
+
+p.productdescription {
+    font-size: 11px !important;
+    color: grey;
+    line-height: 18px;
+    text-align: left;
+    width: 350px;
+} 

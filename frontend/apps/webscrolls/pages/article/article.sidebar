@@ -2,7 +2,7 @@ SCHEMA
 ======
 {
     "contactform": {"html":"form-generator", "file":"./forms/contact.form", "id":"contactform"},
-    "articleadv": {"html":"content-post", "article":".sidebar/articleadv.md", "id":"articleadv", "style":"width:100%;", "styleBody":"url(./pages/article/articleadv.styleBody.css)", "styleContainer":"display:inline-block;background-image: linear-gradient(to bottom, orange, white);height:100%;border-radius: 15px;"}
+    "articleadv": {"html":"content-post", "article":"{{url.article_path}}/articleadv.md", "id":"articleadv", "style":"width:100%;", "styleBody":"url(./pages/article/articleadv.styleBody.css)", "styleContainer":"display:inline-block;background-image: linear-gradient(to bottom, orange, white);height:100%;border-radius: 15px;"}
 }
 ======
 

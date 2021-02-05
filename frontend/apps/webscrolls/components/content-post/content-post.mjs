@@ -59,4 +59,4 @@ function register() {
 
 const trueWebComponentMode = true;	// making this false renders the component without using Shadow DOM
 
-export const content_post = {trueWebComponentMode, register, elementConnected, getArticle, renderArticle, getContentFunctions}
+export const content_post = {trueWebComponentMode, register, elementConnected, getArticle, renderArticle, getContentFunctions, interceptPageLoad}

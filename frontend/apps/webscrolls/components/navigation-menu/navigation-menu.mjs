@@ -35,8 +35,9 @@ async function elementConnected(element) {
 		if (!navigation_menu.datas) navigation_menu.datas = {}; navigation_menu.datas[element.id] = data;
 	} else navigation_menu.data = data;
 }
-
+let alternativeVariable = 0;
 function enableDescription(searchElement, id) {
+	alternativeVariable++;
 	const elementDescriptions = searchElement.parentElement.parentElement.querySelectorAll(".description");
 	elementDescriptions.forEach(element => {if (element.id == id) element.classList.add("visible"); else element.classList.remove("visible");});
 
@@ -45,6 +46,15 @@ function enableDescription(searchElement, id) {
 
 	const elementSubmenus = searchElement.parentElement.querySelectorAll(".submenu");
 	elementSubmenus.forEach(element => {if (element === searchElement) element.classList.add("selected"); else element.classList.remove("selected");});
+}
+
+function getData(id) {
+	alternativeVariable++;
+	if(alternativeVariable == 1){
+	let defaultId = id.firstElementChild.firstElementChild.firstElementChild.id;
+	let spanObject = id.firstElementChild.firstElementChild.firstElementChild
+	enableDescription(spanObject, defaultId);
+	}
 }
 
 async function _massageMenu(element, entries, level) {
@@ -79,4 +89,4 @@ function register() {
 
 const trueWebComponentMode = true;	// making this false renders the component without using Shadow DOM
 
-export const navigation_menu = {trueWebComponentMode, register, elementConnected, enableDescription}
+export const navigation_menu = {trueWebComponentMode, register, elementConnected, enableDescription, getData}

@@ -134,7 +134,7 @@ body {
     {{/logo}}
     <div class="menudiv">
     {{#level1}}
-    <span class="m">{{item}}
+    <span class="m" onmouseover="monkshu_env.components['navigation-menu'].getData(this)">{{item}}
     {{#hasLevelTwo}}
     <span class="mitem"}>
     {{/hasLevelTwo}}
@@ -142,7 +142,8 @@ body {
         <span class="column right">{{#level2}}
             <div class="description {{#selected}}visible{{/selected}}" id="{{id}}">{{{description}}}</div>
             <div class="menubgimage {{#selected}}visible{{/selected}}" id="{{id}}"><img src="./articles/.menus/en/.menubgimage/menu-bg-3.png"></div>
-            {{/level2}}</span>
+            {{/level2}}
+        </span>
     {{#hasLevelTwo}}
     </span>
     {{/hasLevelTwo}}

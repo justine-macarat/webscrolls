@@ -2,11 +2,11 @@ SCHEMA
 ======
 {
     "header": {"html":"div","__org_monkshu_innerHTML":"Message us","class":"header"},
-    "name": {"id":"name","html":"input","type":"text","placeholder":"Enter full name","required":true,"class":"fullwidth"},
-    "company": {"id":"company","type":"text","placeholder":"Enter company","required":true,"class":"fullwidth"},
-    "email": {"id":"email","type":"email","placeholder":"Enter email","required":true,"class":"fullwidth"},
-    "phone": {"id":"tel","type":"tel","placeholder":"Enter phone","required":true,"class":"fullwidth"},
-    "message": {"id":"message","html":"textarea","rows":"3","placeholder":"Enter message","required":true,"class":"fullwidth"},
+    "name": {"id":"name","html":"input","type":"text","placeholder":"Enter full name","required":"required","class":"fullwidth"},
+    "company": {"id":"company","type":"text","placeholder":"Enter company","required":"required","class":"fullwidth"},
+    "email": {"id":"email","type":"email","placeholder":"Enter email","required":"required","class":"fullwidth"},
+    "phone": {"id":"tel","type":"tel","placeholder":"Enter phone","required":"required","class":"fullwidth"},
+    "message": {"id":"message","html":"textarea","rows":"3","placeholder":"Enter message","required":"required","class":"fullwidth"},
     "submit": {"type":"submit","onClick":"window.monkshu_env.components['form-generator'].submit('contactform','window.webscrolls_env.contactform.submit()')","class":"fullwidthbutton"}
 }
 ======

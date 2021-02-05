@@ -1,4 +1,4 @@
-SCHEMA
+    SCHEMA
 ======
 {
     "metadata": {"html":"page-meta", "files":"./pages/home/metadata.{{lang}}.txt"},

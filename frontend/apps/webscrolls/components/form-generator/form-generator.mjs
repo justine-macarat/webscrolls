@@ -22,7 +22,7 @@ function submit(id, functionName) {
 	if (functionName.indexOf("()") != 0) functionName = functionName.split("()")[0];
 	
 	let callable = util.getFunctionFromString(functionName);
-	if (callable) callable(values); else LOG.debug(`Form submission handler ${functionName} not available.`); 
+	if (callable) callable(values, element); else LOG.debug(`Form submission handler ${functionName} not available.`); 
 }
 
 async function elementConnected(element) {

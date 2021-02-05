@@ -1,4 +1,4 @@
-a h1:nth-child(odd) {color:#e81d26;}
+a h1:nth-child(odd) {color:#A81010;}
     
 a h1:nth-child(even) {color:#07439c;}
 
@@ -35,9 +35,9 @@ td a img{
     margin-right: 15px !important;
 }
 
-td a:hover{
-    text-decoration:none !important;
-    color: black;
+td a:hover h1{
+    color: #A81010;
+    text-decoration: none;
 }
 
 

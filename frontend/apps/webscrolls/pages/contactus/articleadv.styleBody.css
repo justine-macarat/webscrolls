@@ -1,0 +1,22 @@
+a {
+    text-decoration: none !important;
+    background-color: red;
+    color: white !important;
+    padding:5px !important;
+    text-decoration: none !important; 
+    display: inline-block !important;
+    border-radius: 5px;
+    padding: 4px;
+}
+
+p, h3 {
+    text-align:center;
+    color:black;
+    padding:10px;
+}
+
+body {
+    padding-top: 400px;
+    box-sizing: border-box;
+    font-family: Raleway;
+}

@@ -44,6 +44,23 @@
                     }
                 ]
             }
+        },
+        {
+            "level1": {
+                "item": "Company",
+                "hasLevelTwo": true,
+                "level2": [
+                    {
+                        "item": "About Us"
+                    },
+                    {
+                        "item": "Contact Us"
+                    },
+                    {
+                        "item": "Join Our Team"
+                    }
+                ]
+            }
         }
     ]
 }
